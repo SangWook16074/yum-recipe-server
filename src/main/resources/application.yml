@@ -5,6 +5,17 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+springdoc:
+  swagger-ui:
+    use-root-path: true
+  api-docs:
+    version: openapi_3_1
+    enabled: true
+    path: /api/ingredients/v3/api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  enable-spring-security: true
+
 elasticsearch:
   host: ${ELASTICSEARCH_HOST}
   port: ${ELASTICSEARCH_PORT}
