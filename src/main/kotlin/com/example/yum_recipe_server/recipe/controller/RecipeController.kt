@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/recipe")
+@RequestMapping("/api/recipes")
 class RecipeController @Autowired constructor(
     private val recipeService: RecipeService
 ) {

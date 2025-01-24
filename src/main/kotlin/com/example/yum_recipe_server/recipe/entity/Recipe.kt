@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Field
 import org.springframework.data.elasticsearch.annotations.FieldType
 
 @Document(indexName = "recipes")
-class Recipe(
+data class Recipe(
     @Id
     @Field(type = FieldType.Keyword)
     val id : String,
@@ -25,5 +25,10 @@ class Recipe(
 
     @Field(type = FieldType.Text)
     val imageUrl : String,
+)
 
+data class Ingredient(
+    val name : String,
+
+    val ea : String,
 )

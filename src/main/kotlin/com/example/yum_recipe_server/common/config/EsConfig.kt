@@ -1,5 +1,9 @@
 package com.example.yum_recipe_server.common.config
 
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.elasticsearch.client.ClientConfiguration
 import org.springframework.data.elasticsearch.client.elc.ReactiveElasticsearchConfiguration
@@ -12,11 +16,25 @@ import javax.net.ssl.*
 
 @Configuration
 class EsConfig : ReactiveElasticsearchConfiguration() {
+
+    @Value("\${elasticsearch.host}")
+    lateinit var host : String
+
+    @Value("\${elasticsearch.port}")
+    lateinit var port : String
+
+    @Value("\${elasticsearch.username}")
+    lateinit var username : String
+
+    @Value("\${elasticsearch.password}")
+    lateinit var password : String
+
+    @Bean
     override fun clientConfiguration(): ClientConfiguration {
         return ClientConfiguration.builder()
-            .connectedTo("ec2-43-203-35-91.ap-northeast-2.compute.amazonaws.com:9200")
+            .connectedTo("$host:$port")
             .usingSsl(disableSSLVerification()!!, allHostsValid())
-            .withBasicAuth("elastic", "+l1W2CsmivsKhiSz+NJ*")
+            .withBasicAuth(username, password)
             .build()
     }
 
