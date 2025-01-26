@@ -21,11 +21,11 @@ data class Recipe(
     val amount : String?,
 
     @JsonProperty("cook_time")
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Keyword, name = "cook_time")
     val cookTime : String?,
 
     @JsonProperty("image_url")
-    @Field(type = FieldType.Text)
+    @Field(type = FieldType.Text, name = "image_url")
     val imageUrl : String?,
 
     @Field(type = FieldType.Nested)
@@ -48,6 +48,6 @@ data class Step(
     val text : String,
 
     @JsonProperty("image_url")
-    @Field(type = FieldType.Text)
+    @Field(type = FieldType.Text, name = "image_url")
     val imageUrl : String?,
 )
