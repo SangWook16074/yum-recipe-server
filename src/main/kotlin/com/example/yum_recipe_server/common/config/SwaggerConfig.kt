@@ -17,6 +17,6 @@ class SwaggerConfig {
 
     private fun swaggerInfo() : Info = Info()
         .title("Yum 서버 Api 명세")
-        .description("A&I  프로젝트 Yum 서버의 레시피 Api 명세서입니다.")
+        .description("A&I 프로젝트 Yum 서버의 레시피 Api 명세서입니다.")
         .version("1.0.0")
 }
