@@ -17,7 +17,7 @@ springdoc:
   enable-spring-security: true
 
 elasticsearch:
-  host: ${ELASTICSEARCH_HOST}
-  port: ${ELASTICSEARCH_PORT}
+  host: yum-recipe-es-container
+  port: 9200
   username: ${ELASTICSEARCH_USERNAME}
   password: ${ELASTICSEARCH_PASSWORD}

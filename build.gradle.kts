@@ -24,7 +24,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.3")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.3.0")
 	// 테스트 의존성
 	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 	testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.1")
