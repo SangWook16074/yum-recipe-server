@@ -29,7 +29,7 @@ services:
 
   yum-recipe-app:
     image: ${IMAGE_NAME}
-    container_name: yum-recipe-app-container
+    container_name: yum-recipe-server-container
     environment:
       SPRING_ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME}
       SPRING_ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_USERNAME}
