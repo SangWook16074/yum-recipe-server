@@ -23,18 +23,18 @@ class EsConfig : ReactiveElasticsearchConfiguration() {
     @Value("\${elasticsearch.port}")
     lateinit var port : String
 
-    @Value("\${elasticsearch.username}")
-    lateinit var username : String
-
-    @Value("\${elasticsearch.password}")
-    lateinit var password : String
+//    @Value("\${elasticsearch.username}")
+//    lateinit var username : String
+//
+//    @Value("\${elasticsearch.password}")
+//    lateinit var password : String
 
     @Bean
     override fun clientConfiguration(): ClientConfiguration {
         return ClientConfiguration.builder()
             .connectedTo("$host:$port")
-            .usingSsl(disableSSLVerification()!!, allHostsValid())
-            .withBasicAuth(username, password)
+//            .usingSsl(disableSSLVerification()!!, allHostsValid())
+//            .withBasicAuth(username, password)
             .build()
     }
 
