@@ -5,6 +5,12 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+  data:
+    mongodb:
+      host: yum-mongodb-container
+      port: 27017
+      database: recipe
+
 springdoc:
   swagger-ui:
     use-root-path: true
@@ -15,9 +21,3 @@ springdoc:
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
   enable-spring-security: true
-
-elasticsearch:
-  host: yum-recipe-es-container
-  port: 9200
-  username: ${ELASTICSEARCH_USERNAME}
-  password: ${ELASTICSEARCH_PASSWORD}
