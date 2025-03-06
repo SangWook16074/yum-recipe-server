@@ -1,43 +1,18 @@
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
-    container_name: yum-recipe-es-container
-    environment:
-      - node.name=single-node
-      - cluster.name=backtony
-      - discovery.type=single-node
-      - ELASTIC_USERNAME=${ELASTICSEARCH_USERNAME}
-      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASSWORD}
-      - xpack.security.enabled=true
-    ports:
-      - 9200:9200
-    volumes:
-      - esvolume:/usr/share/elasticsearch/data
+  mongodb:
+    image: mongo
+    container_name: yum-mongodb-container
+    networks:
+      - yum-server-net
 
-  kibana:
-    container_name: yum-recipe-kib-container
-    image: docker.elastic.co/kibana/kibana:7.15.2
-    environment:
-      SERVER_NAME: kibana
-      ELASTICSEARCH_HOSTS: http://yum-recipe-es-container:9200
-      ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME}
-      ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_PASSWORD}
-    ports:
-      - 5601:5601
-    depends_on:
-      - elasticsearch
 
   yum-recipe-app:
     image: ${IMAGE_NAME}
     container_name: yum-recipe-server-container
-    environment:
-      SPRING_ELASTICSEARCH_USERNAME: ${ELASTICSEARCH_USERNAME}
-      SPRING_ELASTICSEARCH_PASSWORD: ${ELASTICSEARCH_USERNAME}
     depends_on:
-      - kibana
-
-volumes:
-  esvolume:
+      - mongodb
+    networks:
+      - yum-server-net
 
 networks:
   network1:
