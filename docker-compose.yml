@@ -2,6 +2,10 @@ services:
   mongodb:
     image: mongo
     container_name: yum-mongodb-container
+    volumes:
+      - mongo_data:/var/lib/mongo
+    ports:
+      - "27017:27017"
     networks:
       - yum-server-net
 
@@ -14,7 +18,11 @@ services:
     networks:
       - yum-server-net
 
+
+volumes:
+  mongo_data:
+
 networks:
-  network1:
+  yum-server-net:
     name: yum-server-net
     external: true
